@@ -29,13 +29,9 @@ public class Steps {
         app.getIpotekaCalcPage().checkedTitlePage(title);
     }
 
-    @Когда("^Прокручиваем страницу до калькулятора$")
-    public void scrollTOCalculateSberIpoteka() {
-        app.getIpotekaCalcPage().scrollToCalculatorAnsSelectFrame();
-    }
-
     @Когда("^Заполняем параметры желаемого кредита$")
     public void inputDataCredit(DataTable dataTable) {
+        app.getIpotekaCalcPage().scrollToCalculatorAnsSelectFrame();
         dataTable.cells().forEach(
                 raw -> {
                     app.getIpotekaCalcPage().fillFieldInCalculator(raw.get(0), raw.get(1));
@@ -43,13 +39,9 @@ public class Steps {
         );
     }
 
-    @Когда("^Прокручиваем до выбора дополнительных услуг$")
-    public void scrollAddServSber () {
-        app.getIpotekaCalcPage().scrollByButtonIssue();
-    }
-
     @Когда("^Подключаем или отключаем дополнительные услуги$")
     public void selectAddServSber(DataTable dataTable) {
+        app.getIpotekaCalcPage().scrollByButtonIssue();
         dataTable.cells().forEach(
                 raw -> {
                     app.getIpotekaCalcPage().selectAddServ(raw.get(0), raw.get(1));
